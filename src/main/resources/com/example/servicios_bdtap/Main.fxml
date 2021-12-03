@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
+            fx:controller="com.example.servicios_bdtap.controllers.MainController"
             xmlns:fx="http://javafx.com/fxml">
     <center>
         <VBox alignment="CENTER" spacing="15">
