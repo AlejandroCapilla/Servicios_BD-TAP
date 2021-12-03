@@ -1,6 +1,7 @@
 module com.example.servicios_bdtap {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.example.servicios_bdtap to javafx.fxml;
