@@ -24,7 +24,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'com.example.servicios_bdtap'
-    mainClass = 'com.example.servicios_bdtap.HelloApplication'
+    mainClass = 'com.example.servicios_bdtap.Main'
 }
 
 javafx {
@@ -33,7 +33,6 @@ javafx {
 }
 
 dependencies {
-
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
