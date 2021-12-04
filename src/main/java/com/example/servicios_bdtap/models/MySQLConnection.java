@@ -10,8 +10,8 @@ import java.util.logging.Logger;
     private static String hostname   = "localhost";
     private static String dbname = "Servicios";
     private static String dbport = "3306";
-    private static String dbuser = "admin";
-    private static String dbpass = "1234";
+    private static String dbuser = "jorge";
+    private static String dbpass = "28";
     public static void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

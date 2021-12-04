@@ -8,4 +8,6 @@ module com.example.servicios_bdtap {
     exports com.example.servicios_bdtap;
     exports com.example.servicios_bdtap.controllers;
     opens com.example.servicios_bdtap.controllers to javafx.fxml;
+    exports com.example.servicios_bdtap.models.modelos;
+    opens com.example.servicios_bdtap.models.modelos to javafx.fxml;
 }

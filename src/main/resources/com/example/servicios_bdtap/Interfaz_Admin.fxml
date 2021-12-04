@@ -36,9 +36,9 @@
                     </VBox>
                     <VBox alignment="CENTER" spacing="10">
                         <Label text="Clave Servicio"/>
-                        <TextField fx:id="btncveServicio"/>
+                        <TextField fx:id="txtcveServicio"/>
                         <Label text="Nombre Servicio"/>
-                        <TextField fx:id="btnserNombre"/>
+                        <TextField fx:id="txtserNombre"/>
                         <Button fx:id="btnAgrSer" text="Agregar Servicio"/>
                         <Button fx:id="btnDelSer" text="Borrar Servicio"/>
                         <Button fx:id="btnUpdSer" text="Actualizar Servicio"/>
@@ -67,9 +67,9 @@
                     </VBox>
                     <VBox alignment="CENTER" spacing="10">
                         <Label text="Clave Compañia"/>
-                        <TextField fx:id="btncveCompania"/>
+                        <TextField fx:id="txtcveCompania"/>
                         <Label text="Nombre Compañia"/>
-                        <TextField fx:id="btncomNombre"/>
+                        <TextField fx:id="txtcomNombre"/>
                         <Button fx:id="btnAgrCom" text="Agregar Compañia"/>
                         <Button fx:id="btnDelCom" text="Borrar Compañia"/>
                         <Button fx:id="btnUpdCom" text="Actualizar Compañia"/>
