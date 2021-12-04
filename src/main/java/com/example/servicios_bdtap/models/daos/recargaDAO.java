@@ -1,6 +1,7 @@
 package com.example.servicios_bdtap.models.daos;
 
-public class recarga {
+//insert
+public class recargaDAO {
     private int cveRecarga;
     private int cveUsuario;
     private String recCompNom;

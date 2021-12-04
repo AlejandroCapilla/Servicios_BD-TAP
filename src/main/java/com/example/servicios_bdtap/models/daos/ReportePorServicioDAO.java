@@ -1,6 +1,7 @@
 package com.example.servicios_bdtap.models.daos;
 
-public class ReportePorServicio {
+//insert
+public class ReportePorServicioDAO {
     private int cveServicio;
     private int cveAdmin;
     private double repsTotalPago;

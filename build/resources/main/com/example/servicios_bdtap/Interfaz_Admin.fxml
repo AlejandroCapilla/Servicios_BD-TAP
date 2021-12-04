@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.servicios_bdtap.controllers.InterfazAdminController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20">
+            <Label text="Bienvenido a la interfaz de administrador" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+            <HBox alignment="CENTER" spacing="50">
+                <HBox alignment="CENTER_LEFT" spacing="20" >
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Listado Servicios" style="-fx-font-size: 15; -fx-font-weight: bold;"/>
+                        <TableView fx:id="tblServ">
+                            <columns>
+                                <TableColumn fx:id="a_cveServicio" text="Clave Servicio">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="a_cveServicio" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="a_serNombre" text="Nombre Servicio">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="a_serNombre" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Clave Servicio"/>
+                        <TextField fx:id="btncveServicio"/>
+                        <Label text="Nombre Servicio"/>
+                        <TextField fx:id="btnserNombre"/>
+                        <Button fx:id="btnAgrSer" text="Agregar Servicio"/>
+                        <Button fx:id="btnDelSer" text="Borrar Servicio"/>
+                        <Button fx:id="btnUpdSer" text="Actualizar Servicio"/>
+                        <Button fx:id="btnReporDServ" text="Generar reporte de Servicios"/>
+                        <Button fx:id="btnReporPServ" text="Generar reporte por Servicios"/>
+                    </VBox>
+                </HBox>
+
+                <HBox alignment="CENTER_RIGHT" spacing="20" >
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Listado Compañias" style="-fx-font-size: 15; -fx-font-weight: bold;"/>
+                        <TableView fx:id="tblComp">
+                            <columns>
+                                <TableColumn fx:id="a_cveCompania" text="Clave Compañia">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="a_cveCompania" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="a_comNombre" text="Nombre Compañia">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="a_comNombre" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Clave Compañia"/>
+                        <TextField fx:id="btncveCompania"/>
+                        <Label text="Nombre Compañia"/>
+                        <TextField fx:id="btncomNombre"/>
+                        <Button fx:id="btnAgrCom" text="Agregar Compañia"/>
+                        <Button fx:id="btnDelCom" text="Borrar Compañia"/>
+                        <Button fx:id="btnUpdCom" text="Actualizar Compañia"/>
+                        <Button fx:id="btnReporDCom" text="Generar reporte de Compañia"/>
+                        <Button fx:id="btnReporPCom" text="Generar reporte por Compañia"/>
+                    </VBox>
+                </HBox>
+            </HBox>
+        </VBox>
+
+    </center>
+
+</BorderPane>

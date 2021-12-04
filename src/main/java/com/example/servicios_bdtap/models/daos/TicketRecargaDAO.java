@@ -1,6 +1,7 @@
 package com.example.servicios_bdtap.models.daos;
 
-public class TicketRecarga {
+//insert
+public class TicketRecargaDAO {
     private int numTicRecarga;
     private int cveRecarga;
     private int ticrNumeAutorizacion;
