@@ -2,6 +2,11 @@ module com.example.servicios_bdtap {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires kernel;
+    requires io;
+    requires layout;
+    requires java.desktop;
+    requires jdk.compiler;
 
 
     opens com.example.servicios_bdtap to javafx.fxml;

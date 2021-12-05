@@ -1,5 +1,6 @@
 package com.example.servicios_bdtap.controllers;
 
+import com.example.servicios_bdtap.PDFreports.PDFreports;
 import com.example.servicios_bdtap.models.MySQLConnection;
 import com.example.servicios_bdtap.models.daos.CompaniaDAO;
 import com.example.servicios_bdtap.models.daos.ServicioDAO;
@@ -20,6 +21,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class InterfazAdminController implements Initializable {
+
+    @FXML
+    PDFreports pdFreports = new PDFreports();
+
     @FXML
     private TableView<Servicio> tblServ;
     ServicioDAO servicioDAO = new ServicioDAO(MySQLConnection.getConnection());
@@ -31,7 +36,7 @@ public class InterfazAdminController implements Initializable {
     ObservableList<Compania> lsCompania = FXCollections.observableArrayList();
 
     @FXML
-    Button btnAgrSer, btnUpdSer, btnDelSer, btnAgrCom, btnUpdCom, btnDelCom;
+    Button btnAgrSer, btnUpdSer, btnDelSer, btnAgrCom, btnUpdCom, btnDelCom, btnReporDServ, btnReporPServ, btnReporDCom, btnReporPCom;;
 
     @FXML
     TextField txtcveServicio, txtserNombre, txtcveCompania, txtcomNombre;
@@ -132,6 +137,30 @@ public class InterfazAdminController implements Initializable {
                 Compania SelCompania = (Compania) tblComp.getSelectionModel().getSelectedItem();
                 txtcveCompania.setText(SelCompania.getA_cveCompania()+"");
                 txtcomNombre.setText(SelCompania.getA_comNombre());
+            }
+        });
+        btnReporPCom.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                pdFreports.m_ReporPCom();
+            }
+        });
+        btnReporDCom.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                pdFreports.m_ReporDCom();
+            }
+        });
+        btnReporDServ.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                pdFreports.m_ReporDServ();
+            }
+        });
+        btnReporPServ.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                pdFreports.m_ReporPServ();
             }
         });
     }

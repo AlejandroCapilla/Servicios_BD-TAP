@@ -36,6 +36,11 @@ dependencies {
     implementation 'mysql:mysql-connector-java:8.0.25'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation 'org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0'
+    implementation 'com.itextpdf:itext7-core:7.1.16'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.32'
 }
 
 test {

@@ -73,8 +73,8 @@
                         <Button fx:id="btnAgrCom" text="Agregar Compañia"/>
                         <Button fx:id="btnDelCom" text="Borrar Compañia"/>
                         <Button fx:id="btnUpdCom" text="Actualizar Compañia"/>
-                        <Button fx:id="btnReporDCom" text="Generar reporte de Compañia"/>
-                        <Button fx:id="btnReporPCom" text="Generar reporte por Compañia"/>
+                        <Button fx:id="btnReporDCom" text="Generar reporte de Recargas"/>
+                        <Button fx:id="btnReporPCom" text="Generar reporte de Recargas por Compañia"/>
                     </VBox>
                 </HBox>
             </HBox>

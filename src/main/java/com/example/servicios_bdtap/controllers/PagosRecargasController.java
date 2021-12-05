@@ -1,5 +1,6 @@
 package com.example.servicios_bdtap.controllers;
 
+import com.example.servicios_bdtap.PDFreports.PDFreports;
 import com.example.servicios_bdtap.models.MySQLConnection;
 import com.example.servicios_bdtap.models.daos.ServicioDAO;
 import com.example.servicios_bdtap.models.daos.CompaniaDAO;
@@ -25,6 +26,10 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class PagosRecargasController implements Initializable{
+
+    @FXML
+    PDFreports pdFreports = new PDFreports();
+
     @FXML
     ObservableList<Servicio> lsServicio = FXCollections.observableArrayList();
     ServicioDAO servicioDAO = new ServicioDAO(MySQLConnection.getConnection());
@@ -189,12 +194,75 @@ public class PagosRecargasController implements Initializable{
                     ticketRecargaDAO.insert(ticketRecarga);
                     reporteDeRecargasDAO.insert(reporteDeRecargas);
                 }
+                btn_Ticket.setDisable(false);
+                btn_Pagar.setDisable(true);
             }
         });
         btn_Ticket.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                if(rbt_PagoSer.isSelected()){
+                    pdFreports.m_TicketServicio(txt_PSoR.getText());
+                    txt_Comision.setDisable(true);
+                    txt_Monto.setDisable(true);
+                    txt_NumRef.setDisable(true);
+                    txt_Telefono.setDisable(true);
+                    txt_NumAut.setDisable(true);
+                    txt_ConfirmTel.setDisable(true);
+                    txt_Fecha.setDisable(true);
+                    txt_Hora.setDisable(true);
+                    txt_NumTicket.setDisable(true);
+                    txt_Usuario.setDisable(true);
+                    txt_cveSerCom.setDisable(true);
+                    txt_PSoR.setDisable(true);
+                    btn_Pagar.setDisable(true);
+                    btn_Ticket.setDisable(true);
+                    cbo_Servicios.setDisable(true);
+                    cbo_Recargas.setDisable(true);
+                    txt_Comision.setText("");
+                    txt_Monto.setText("");
+                    txt_NumRef.setText("");
+                    txt_Telefono.setText("");
+                    txt_NumAut.setText("");
+                    txt_ConfirmTel.setText("");
+                    txt_Fecha.setText("");
+                    txt_Hora.setText("");
+                    txt_NumTicket.setText("");
+                    txt_Usuario.setText("");
+                    txt_cveSerCom.setText("");
+                    txt_PSoR.setText("");
+                }
+                if(rbt_Recarga.isSelected()){
+                    pdFreports.m_TicketRecarga(txt_PSoR.getText());
+                    txt_Comision.setDisable(true);
+                    txt_Monto.setDisable(true);
+                    txt_NumRef.setDisable(true);
+                    txt_Telefono.setDisable(true);
+                    txt_NumAut.setDisable(true);
+                    txt_ConfirmTel.setDisable(true);
+                    txt_Fecha.setDisable(true);
+                    txt_Hora.setDisable(true);
+                    txt_NumTicket.setDisable(true);
+                    txt_Usuario.setDisable(true);
+                    txt_cveSerCom.setDisable(true);
+                    txt_PSoR.setDisable(true);
+                    btn_Pagar.setDisable(true);
+                    btn_Ticket.setDisable(true);
+                    cbo_Servicios.setDisable(true);
+                    cbo_Recargas.setDisable(true);
+                    txt_Comision.setText("");
+                    txt_Monto.setText("");
+                    txt_NumRef.setText("");
+                    txt_Telefono.setText("");
+                    txt_NumAut.setText("");
+                    txt_ConfirmTel.setText("");
+                    txt_Fecha.setText("");
+                    txt_Hora.setText("");
+                    txt_NumTicket.setText("");
+                    txt_Usuario.setText("");
+                    txt_cveSerCom.setText("");
+                    txt_PSoR.setText("");
+                }
             }
         });
     }
