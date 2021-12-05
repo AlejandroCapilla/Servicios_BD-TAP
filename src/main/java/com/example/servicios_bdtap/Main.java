@@ -9,9 +9,9 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Interfaz_Admin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
-        stage.setTitle("Hola gente de distintos gustos amorosos");
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 300, 230);
+        stage.setTitle("Proyecto Final TAP - FBD");
         stage.setScene(scene);
         stage.show();
     }

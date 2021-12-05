@@ -20,8 +20,9 @@
             </HBox>
             <HBox spacing="10" alignment="CENTER">
                 <Label text="Contaseña:"/>
-                <TextField fx:id="txt_Contraseña"/>
+                <TextField fx:id="txt_Contrasena"/>
             </HBox>
+            <Button fx:id="btn_Acceder" text="Acceder"/>
         </VBox>
     </center>
 

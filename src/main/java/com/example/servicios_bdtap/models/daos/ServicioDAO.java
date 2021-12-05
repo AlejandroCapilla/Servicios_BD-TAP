@@ -7,16 +7,12 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
-//INSERT, UPDATE, DELETE
 public class ServicioDAO {
-    private int cveServicio;
-    private String serNombre;
     Connection connServ;
-    ObservableList<Servicio> lsServicio = FXCollections.observableArrayList();
 
     public ServicioDAO (Connection conn){ this.connServ = conn;}
 
-    public ObservableList<Servicio> select(){
+    public void select(ObservableList lsServicio){
         try{
             String query ="select * from servicio";
             Statement st = connServ.createStatement();
@@ -27,7 +23,19 @@ public class ServicioDAO {
         }catch (SQLException ex){
             ex.printStackTrace();
         }
-        return lsServicio;
+    }
+
+    public void selectcb(ObservableList lsServicio){
+        try{
+            String query ="select serNombre from servicio";
+            Statement st = connServ.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()){
+                lsServicio.add(rs.getString("serNombre"));
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
     }
 
     public boolean insert(Servicio servicio) {
