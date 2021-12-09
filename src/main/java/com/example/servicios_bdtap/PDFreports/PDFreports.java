@@ -256,7 +256,7 @@ public class PDFreports {
         document.setMargins(20.0F, 20.0F, 20.0F, 20.0F);
         PdfFont font = PdfFontFactory.createFont("Helvetica");
         PdfFont bold = PdfFontFactory.createFont("Helvetica-Bold");
-        Table table1 = (new Table(UnitValue.createPercentArray(new float[]{2.0F, 4.0F}))).useAllAvailableWidth();
+        Table table1 = (new Table(UnitValue.createPercentArray(new float[]{2.0F, 4.0F, 4, 4, 4}))).useAllAvailableWidth();
         this.processPdfDeServicios(table1, (DeServicios)null, bold, true);
         Iterator var11 = this.consultasDAO.getDeServicios().iterator();
 
@@ -296,7 +296,7 @@ public class PDFreports {
         document.setMargins(20.0F, 20.0F, 20.0F, 20.0F);
         PdfFont font = PdfFontFactory.createFont("Helvetica");
         PdfFont bold = PdfFontFactory.createFont("Helvetica-Bold");
-        Table table2 = (new Table(UnitValue.createPercentArray(new float[]{2.0F, 4.0F}))).useAllAvailableWidth();
+        Table table2 = (new Table(UnitValue.createPercentArray(new float[]{2.0F, 4.0F, 4, 4, 4}))).useAllAvailableWidth();
         this.processPdfDeRecargas(table2, (DeRecargas)null, bold, true);
         Iterator var11 = this.consultasDAO.getDeRecargas().iterator();
 
@@ -336,7 +336,7 @@ public class PDFreports {
         document.setMargins(20.0F, 20.0F, 20.0F, 20.0F);
         PdfFont font = PdfFontFactory.createFont("Helvetica");
         PdfFont bold = PdfFontFactory.createFont("Helvetica-Bold");
-        Table table3 = (new Table(UnitValue.createPercentArray(new float[]{5.0F, 4.0F, 4.0F, 4.0F}))).useAllAvailableWidth();
+        Table table3 = (new Table(UnitValue.createPercentArray(new float[]{5.0F, 4.0F}))).useAllAvailableWidth();
         this.processPdfPorServicios(table3, (PorServicio)null, bold, true);
         Iterator var11 = this.consultasDAO.getPorServicio().iterator();
 
@@ -372,7 +372,7 @@ public class PDFreports {
         document.setMargins(20.0F, 20.0F, 20.0F, 20.0F);
         PdfFont font = PdfFontFactory.createFont("Helvetica");
         PdfFont bold = PdfFontFactory.createFont("Helvetica-Bold");
-        Table table4 = (new Table(UnitValue.createPercentArray(new float[]{6.0F, 4.0F, 4.0F, 4.0F}))).useAllAvailableWidth();
+        Table table4 = (new Table(UnitValue.createPercentArray(new float[]{6.0F, 4.0F}))).useAllAvailableWidth();
         this.processPdfPorCompania(table4, (PorCompanias)null, bold, true);
         Iterator var11 = this.consultasDAO.getPorCompanias().iterator();
 
@@ -406,7 +406,7 @@ public class PDFreports {
         document.setMargins(20.0F, 20.0F, 20.0F, 20.0F);
         PdfFont font = PdfFontFactory.createFont("Helvetica");
         PdfFont bold = PdfFontFactory.createFont("Helvetica-Bold");
-        Table table5 = (new Table(UnitValue.createPercentArray(new float[]{6.0F, 4.0F, 4.0F, 4.0F}))).useAllAvailableWidth();
+        Table table5 = (new Table(UnitValue.createPercentArray(new float[]{6.0F, 4.0F, 4.0F, 4.0F,4,4,4,4,4}))).useAllAvailableWidth();
         this.processPdfTicketRecargas(table5, (TicketRecargas)null, bold, true);
         Iterator var11 = this.consultasDAO.getTicketRecargas(cveRec).iterator();
 
@@ -454,7 +454,7 @@ public class PDFreports {
         document.setMargins(20.0F, 20.0F, 20.0F, 20.0F);
         PdfFont font = PdfFontFactory.createFont("Helvetica");
         PdfFont bold = PdfFontFactory.createFont("Helvetica-Bold");
-        Table table6 = (new Table(UnitValue.createPercentArray(new float[]{6.0F, 4.0F, 4.0F, 4.0F}))).useAllAvailableWidth();
+        Table table6 = (new Table(UnitValue.createPercentArray(new float[]{6.0F, 4.0F, 4.0F, 4.0F,4,4,4,4,4}))).useAllAvailableWidth();
         this.processPdfTicketServicios(table6, (TicketServicios) null, bold, true);
         Iterator var11 = this.consultasDAO.getTicketServicios(cvePServ).iterator();
 

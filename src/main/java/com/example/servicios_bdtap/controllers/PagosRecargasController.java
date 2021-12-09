@@ -109,7 +109,6 @@ public class PagosRecargasController implements Initializable{
                 btn_Pagar.setDisable(false);
                 cbo_Servicios.setDisable(false);
                 txt_Usuario.setDisable(false);
-                txt_cveSerCom.setDisable(false);
                 txt_PSoR.setDisable(false);
                 cbo_Recargas.setDisable(true);
                 txt_Comision.setText("");
@@ -141,7 +140,6 @@ public class PagosRecargasController implements Initializable{
                 btn_Pagar.setDisable(false);
                 cbo_Servicios.setDisable(true);
                 txt_Usuario.setDisable(false);
-                txt_cveSerCom.setDisable(false);
                 txt_PSoR.setDisable(false);
                 cbo_Recargas.setDisable(false);
                 txt_Comision.setText("");
@@ -162,40 +160,46 @@ public class PagosRecargasController implements Initializable{
             @Override
             public void handle(ActionEvent event) {
                 if(rbt_PagoSer.isSelected()){
-                    PagoServ pagoServ = new PagoServ(Integer.parseInt(txt_PSoR.getText()),
-                            Integer.parseInt(txt_Usuario.getText()),
-                            Integer.parseInt(txt_cveSerCom.getText()),
-                            Double.parseDouble(txt_Comision.getText()),
-                            Double.parseDouble(txt_Monto.getText()),
-                            Integer.parseInt(txt_NumRef.getText()), txt_Telefono.getText());
-                    TicketServicio ticketServicio = new TicketServicio(Integer.parseInt(txt_NumTicket.getText()),
-                            Integer.parseInt(txt_PSoR.getText()),
-                            Integer.parseInt(txt_NumAut.getText()),
-                            Date.valueOf(txt_Fecha.getText()),
-                            txt_Hora.getText());
-                    ReporteDeServicios reporteDeServicios = new ReporteDeServicios(Integer.parseInt(txt_PSoR.getText()));
-                    pagoServDAO.insert(pagoServ);
-                    ticketServicioDAO.insert(ticketServicio);
-                    reporteDeServiciosDAO.insert(reporteDeServicios);
+                    if (veriPagoServicio()) {
+                        PagoServ pagoServ = new PagoServ(Integer.parseInt(txt_PSoR.getText()),
+                                Integer.parseInt(txt_Usuario.getText()),
+                                Integer.parseInt(txt_cveSerCom.getText()),
+                                Double.parseDouble(txt_Comision.getText()),
+                                Double.parseDouble(txt_Monto.getText()),
+                                Integer.parseInt(txt_NumRef.getText()), txt_Telefono.getText());
+                        TicketServicio ticketServicio = new TicketServicio(Integer.parseInt(txt_NumTicket.getText()),
+                                Integer.parseInt(txt_PSoR.getText()),
+                                Integer.parseInt(txt_NumAut.getText()),
+                                Date.valueOf(txt_Fecha.getText()),
+                                txt_Hora.getText());
+                        ReporteDeServicios reporteDeServicios = new ReporteDeServicios(Integer.parseInt(txt_PSoR.getText()));
+                        pagoServDAO.insert(pagoServ);
+                        ticketServicioDAO.insert(ticketServicio);
+                        reporteDeServiciosDAO.insert(reporteDeServicios);
+                        btn_Ticket.setDisable(false);
+                        btn_Pagar.setDisable(true);
+                    }
                 }
                 if(rbt_Recarga.isSelected()){
-                    recarga recarga = new recarga(Integer.parseInt(txt_PSoR.getText()),
-                            Integer.parseInt(txt_Usuario.getText()),
-                            Integer.parseInt(txt_cveSerCom.getText()),
-                            Double.parseDouble(txt_Monto.getText()),
-                            txt_Telefono.getText());
-                    TicketRecarga ticketRecarga = new TicketRecarga(Integer.parseInt(txt_NumTicket.getText()),
-                            Integer.parseInt(txt_PSoR.getText()),
-                            Integer.parseInt(txt_NumAut.getText()),
-                            Date.valueOf(txt_Fecha.getText()),
-                            txt_Hora.getText());
-                    ReporteDeRecargas reporteDeRecargas = new ReporteDeRecargas(Integer.parseInt(txt_PSoR.getText()));
-                    recargaDAO.insert(recarga);
-                    ticketRecargaDAO.insert(ticketRecarga);
-                    reporteDeRecargasDAO.insert(reporteDeRecargas);
+                    if (veriRecarga()){
+                        recarga recarga = new recarga(Integer.parseInt(txt_PSoR.getText()),
+                                Integer.parseInt(txt_Usuario.getText()),
+                                Integer.parseInt(txt_cveSerCom.getText()),
+                                Double.parseDouble(txt_Monto.getText()),
+                                txt_Telefono.getText());
+                        TicketRecarga ticketRecarga = new TicketRecarga(Integer.parseInt(txt_NumTicket.getText()),
+                                Integer.parseInt(txt_PSoR.getText()),
+                                Integer.parseInt(txt_NumAut.getText()),
+                                Date.valueOf(txt_Fecha.getText()),
+                                txt_Hora.getText());
+                        ReporteDeRecargas reporteDeRecargas = new ReporteDeRecargas(Integer.parseInt(txt_PSoR.getText()));
+                        recargaDAO.insert(recarga);
+                        ticketRecargaDAO.insert(ticketRecarga);
+                        reporteDeRecargasDAO.insert(reporteDeRecargas);
+                        btn_Ticket.setDisable(false);
+                        btn_Pagar.setDisable(true);
+                    }
                 }
-                btn_Ticket.setDisable(false);
-                btn_Pagar.setDisable(true);
             }
         });
         btn_Ticket.setOnAction(new EventHandler<ActionEvent>() {
@@ -265,5 +269,76 @@ public class PagosRecargasController implements Initializable{
                 }
             }
         });
+        cbo_Servicios.setOnAction(event -> {
+            String nomSer = cbo_Servicios.getSelectionModel(). getSelectedItem() +"";
+            String cveSer = servicioDAO.getCveSer(nomSer);
+            txt_cveSerCom.setText(cveSer);
+        });
+        cbo_Recargas.setOnAction(event -> {
+            String nomCom = cbo_Recargas.getSelectionModel(). getSelectedItem() +"";
+            String cveCom = companiaDAO.getCveCom(nomCom);
+            txt_cveSerCom.setText(cveCom);
+        });
+    }
+
+    public boolean veriPagoServicio(){
+        boolean bandera = false;
+        if(veriCampos())
+            if(txt_Comision.getText().equals(""))
+                alertMessage("Error", null, "Porfavor ingrese la comision para continuar", Alert.AlertType.ERROR);
+            else
+            if(txt_NumRef.getText().equals(""))
+                alertMessage("Error", null, "Porfavor ingrese el numero de referencia para continuar", Alert.AlertType.ERROR);
+            else
+                bandera = true;
+        return bandera;
+    }
+
+    public boolean veriRecarga(){
+        boolean bandera = false;
+        if(veriCampos())
+            if(txt_ConfirmTel.getText().equals(""))
+                alertMessage("Error", null, "Porfavor ingrese la confirmacion del numero de telefono para continuar", Alert.AlertType.ERROR);
+            else
+                bandera = true;
+        return bandera;
+    }
+
+    public boolean veriCampos(){
+        boolean bandera = false;
+        if(txt_PSoR.getText().equals(""))
+            alertMessage("Error", null, "Porfavor ingrese la clave de pago para continuar", Alert.AlertType.ERROR);
+        else
+        if(txt_Usuario.getText().equals(""))
+            alertMessage("Error", null, "Porfavor ingrese la clave de usuario para continuar", Alert.AlertType.ERROR);
+        else
+        if(txt_Monto.getText().equals(""))
+            alertMessage("Error", null, "Porfavor ingrese el monto pago para continuar", Alert.AlertType.ERROR);
+        else
+        if(txt_Telefono.getText().equals(""))
+            alertMessage("Error", null, "Porfavor ingrese el numero de telefono de pago para continuar", Alert.AlertType.ERROR);
+        else
+        if(txt_NumAut.getText().equals(""))
+            alertMessage("Error", null, "Porfavor ingrese el numero de atentificacion para continuar", Alert.AlertType.ERROR);
+        else
+        if(txt_Fecha.getText().equals(""))
+            alertMessage("Error", null, "Porfavor ingrese la fecha para continuar", Alert.AlertType.ERROR);
+        else
+        if(txt_Hora.getText().equals(""))
+            alertMessage("Error", null, "Porfavor ingrese la hora para continuar", Alert.AlertType.ERROR);
+        else
+        if(txt_NumTicket.getText().equals(""))
+            alertMessage("Error", null, "Porfavor ingrese el numero de ticket para continuar", Alert.AlertType.ERROR);
+        else
+            bandera = true;
+        return bandera;
+    }
+
+    private void alertMessage(String title, String Header, String message, Alert.AlertType type){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(Header);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

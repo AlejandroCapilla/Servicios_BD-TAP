@@ -75,4 +75,19 @@ public class CompaniaDAO {
             e.printStackTrace();
         }
     }
+
+    public String getCveCom(String nomCom){
+        String cveCom = null;
+        try{
+            String query ="select cveCompania from compania where comNombre like '" + nomCom+"'";
+            Statement st = connComp.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()){
+                cveCom = String.valueOf(rs.getInt(1));
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return cveCom;
+    }
 }

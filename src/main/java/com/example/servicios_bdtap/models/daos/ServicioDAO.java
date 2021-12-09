@@ -74,5 +74,20 @@ public class ServicioDAO {
             e.printStackTrace();
         }
     }
+
+    public String getCveSer(String nomSer){
+        String cveSer = null;
+        try{
+            String query ="select cveServicio from servicio where serNombre like '" + nomSer+"'";
+            Statement st = connServ.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()){
+                cveSer = String.valueOf(rs.getInt(1));
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return cveSer;
+    }
 }
 
